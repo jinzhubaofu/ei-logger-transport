@@ -3,8 +3,6 @@
  * @author Leon(leon@outlook.com)
  */
 
-/*eslint-env node*/
-
 var u = require('underscore');
 var util = require('util');
 var format = util.format;
