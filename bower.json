@@ -1,0 +1,23 @@
+{
+  "name": "ei-logger-transport",
+  "description": "ei-logger transport",
+  "main": "index.js",
+  "authors": [
+    "ludafa@outlook.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "ei-logger",
+    "transport"
+  ],
+  "homepage": "https://github.com/jinzhubaofu/ei-logger-transport",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.0.5"
+}
