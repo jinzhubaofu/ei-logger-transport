@@ -7,6 +7,16 @@ var u = require('underscore');
 var util = require('util');
 var format = util.format;
 var logger = require('ei-logger');
+var chalk = require('chalk');
+
+var COLORS = {
+    silly: 'black',
+    debug: 'grey',
+    verbose: 'white',
+    info: 'cyan',
+    warn: 'yellow',
+    error: 'red'
+};
 
 var ConsoleTransporter = logger.createTransport({
 
@@ -18,18 +28,19 @@ var ConsoleTransporter = logger.createTransport({
      */
     log: function (loggerName, level) {
 
-        var log = format(
-            '%s [%s] [%s] %s\n',
-            new Date().toISOString(),
-            loggerName,
-            level,
-            format.apply(null, u.toArray(arguments).slice(2))
+        process.stdout.write(''
+            + '[' + this.dye(level, new Date().toISOString()) + '] '
+            + '[' + this.dye(level, loggerName) + '] '
+            + '[' + this.dye(level, level) + '] '
+            + this.dye(level, format.apply(null, u.toArray(arguments).slice(2)))
+            + '\n'
         );
 
-        console.log(12321);
+    },
 
-        process.stdout.write(log);
-
+    dye: function (level, text) {
+        var color = COLORS[level];
+        return color ? chalk[color](text) : text;
     }
 
 
