@@ -79,7 +79,7 @@ var FileTransport = logger.createTransport({
 
         // 这里打开写入流
         var stream = me.stream = fs.createWriteStream(fullname, {
-            flags: 'w+',
+            flags: 'a+',
             encoding: DEFAULT_FILE_ENCODE
         });
 
@@ -87,6 +87,8 @@ var FileTransport = logger.createTransport({
 
             // 标识
             me.isOpening = false;
+
+            me.emit('open');
 
             // 把缓存刷掉
             me.flush();
@@ -124,6 +126,7 @@ var FileTransport = logger.createTransport({
 
     /**
      * 打印日志
+     *
      * @param  {string} loggerName logger名称
      * @param  {string} level      日志等级
      */
